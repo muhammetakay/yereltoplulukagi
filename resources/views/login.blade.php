@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Contact Start -->
+    <!-- Login Start -->
     <div class="container-fluid mt-5 pt-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Contact Us For Any Queries</h4>
+                        <h4 class="m-0 text-uppercase font-weight-bold">Oturum Aç</h4>
                     </div>
                     <div class="bg-white border border-top-0 p-4 mb-3">
                         <div class="mb-4">

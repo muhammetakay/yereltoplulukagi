@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,8 @@ Route::controller(HomeController::class)->group(function() {
     Route::get('contact', 'contact')->name('contact');
     Route::get('category/{slug?}', 'category')->name('category');
     Route::get('single/{slug?}', 'single')->name('single');
+});
+
+Route::controller(AuthController::class)->group(function() {
+    Route::get('login', 'login')->name('login');
 });

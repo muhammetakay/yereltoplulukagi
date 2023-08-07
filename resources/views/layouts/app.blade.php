@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <title>{{ config('app.name') }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
     <link href="{{ asset('favicon.ico') }}" rel="icon">
@@ -33,16 +31,13 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-n2">
                         <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Monday, January 1, 2045</a>
+                            <a class="nav-link text-body small">{{ now()->translatedFormat('l, F j, Y') }}</a>
                         </li>
                         <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Advertise</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="{{ route('contact') }}">Contact</a>
+                            <a class="nav-link text-body small" href="{{ route('contact') }}">İletişim</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="#">Login</a>
+                            <a class="nav-link text-body small" href="{{ route('login') }}">Giriş yap</a>
                         </li>
                     </ul>
                 </nav>
@@ -51,19 +46,16 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-auto mr-n2">
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
+                            <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
+                            <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-body" href="#"><small class="fab fa-linkedin-in"></small></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-body" href="#"><small class="fab fa-instagram"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-google-plus-g"></small></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-body" href="#"><small class="fab fa-youtube"></small></a>
@@ -94,26 +86,18 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="{{ route('index') }}" class="nav-item nav-link active">Home</a>
-                    <a href="{{ route('category', ['slug' => 'business']) }}" class="nav-item nav-link">Category</a>
-                    <a href="{{ route('single', ['slug' => 'lorem-ipsum']) }}" class="nav-item nav-link">Single News</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu item 1</a>
-                            <a href="#" class="dropdown-item">Menu item 2</a>
-                            <a href="#" class="dropdown-item">Menu item 3</a>
-                        </div>
-                    </div>
-                    <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
+                    <a href="{{ route('index') }}" class="nav-item nav-link active">ANASAYFA</a>
+                    <a href="{{ route('category', ['slug' => 'business']) }}" class="nav-item nav-link">KATEGORİ</a>
+                    <a href="{{ route('single', ['slug' => 'lorem-ipsum']) }}" class="nav-item nav-link">Tek Haber</a>
+                    <a href="{{ route('contact') }}" class="nav-item nav-link">İLETİŞİM</a>
                 </div>
-                <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
+                {{-- <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
                     <div class="input-group-append">
                         <button class="input-group-text bg-primary text-dark border-0 px-3"><i
                                 class="fa fa-search"></i></button>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </nav>
     </div>
@@ -127,21 +111,20 @@
     <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
         <div class="row py-4">
             <div class="col-lg-4 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
-                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
-                <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">İLETİŞİM</h5>
+                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+90 123 456 78 90</p>
+                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@yereltoplulukagi.com</p>
+                <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">BİZİ TAKİP ET</h6>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
                     <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">POPÜLER HABERLER</h5>
                 <div class="mb-3">
                     <div class="mb-2">
                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
@@ -165,7 +148,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">KATEGORİLER</h5>
                 <div class="m-n1">
                     <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
                     <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
@@ -193,7 +176,7 @@
         </div>
     </div>
     <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-        <p class="m-0 text-center">&copy; <a href="#">{{ config('app.name') }}</a>. Tüm Hakları Saklıdır.
+        <p class="m-0 text-center">&copy; <a href="{{ route('index') }}">{{ config('app.name') }}</a>. Tüm Hakları Saklıdır.
     </div>
     <!-- Footer End -->
 
