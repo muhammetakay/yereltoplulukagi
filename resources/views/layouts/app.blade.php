@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ config('app.name') }}</title>
+    <title>@yield('title'){{ (View::getSection('title') ? ' | ' : '') . config('app.name') }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- Favicon -->
@@ -36,9 +36,23 @@
                         <li class="nav-item border-right border-secondary">
                             <a class="nav-link text-body small" href="{{ route('contact') }}">İletişim</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body small" href="{{ route('login') }}">Giriş yap</a>
-                        </li>
+                        @if (auth()->check())
+                            <li class="nav-item border-right border-secondary">
+                                <a class="nav-link text-body small">Hoşgeldin, {{ auth()->user()->name }}</a>
+                            </li>
+                            @role('admin|moderator')
+                                <li class="nav-item border-right border-secondary">
+                                    <a class="nav-link text-body small" href="{{ route('admin.index') }}">Admin</a>
+                                </li>
+                            @endrole
+                            <li class="nav-item">
+                                <a class="nav-link text-body small" href="{{ route('logout') }}">Çıkış yap</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link text-body small" href="{{ route('login') }}">Giriş yap</a>
+                            </li>
+                        @endif
                     </ul>
                 </nav>
             </div>

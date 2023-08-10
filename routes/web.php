@@ -27,6 +27,8 @@ Route::controller(HomeController::class)->group(function() {
     Route::get('single/{slug?}', 'single')->name('single');
 });
 
-Route::controller(AuthController::class)->group(function() {
-    Route::get('login', 'login')->name('login');
+Route::controller(AuthController::class)->middleware('guest')->group(function() {
+    Route::any('login', 'login')->name('login');
+    Route::any('register', 'register')->name('register');
+    Route::any('logout', 'logout')->name('logout')->withoutMiddleware('guest');
 });
