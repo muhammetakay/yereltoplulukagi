@@ -32,7 +32,7 @@ class NewsFactory extends Factory
             'category_id' => Category::all()->random()->id,
             'user_id' => User::all()->random()->id,
             'views' => rand(0, 1e3),
-            'image_path' => 'assets/uploads/event-1.png'
+            'image_path' => getRandomNewsImage(),
         ];
     }
 }
