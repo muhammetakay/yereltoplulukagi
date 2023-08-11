@@ -48,7 +48,7 @@
                             </div>
                         @endif
                     </div>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center pagination">
                         {{ $events->links() }}
                     </div>
                 </div>

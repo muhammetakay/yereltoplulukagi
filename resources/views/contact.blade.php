@@ -9,7 +9,7 @@
     <div class="container-fluid mt-5 pt-3">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div id="contact" class="col-lg-8">
                     <div class="section-title mb-0">
                         <h4 class="m-0 text-uppercase font-weight-bold">İLETİŞİM</h4>
                     </div>
@@ -30,6 +30,7 @@
                         </div>
                         <form method="POST" action="{{ route('contact') }}">
                             @csrf
+                            <input type="hidden" name="scroll_to" value="contact">
                             <div class="form-group">
                                 <input type="text" class="form-control p-4" placeholder="İsim" name="fullname" value="{{ old('fullname') }}" required="required"/>
                             </div>
@@ -44,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <p class="text-success">{{ session('success') }}</p>
-                                <p class="text-danger">{{ @$errors->first() }}</p>
+                                <p class="text-danger">{{ old('scroll_to') == 'contact' ? @$errors->first() : '' }}</p>
                             </div>
                             <div>
                                 <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"

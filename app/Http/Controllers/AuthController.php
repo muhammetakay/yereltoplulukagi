@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function login(Request $request) {
+        if($request->has('redirect')) {
+            session()->put('redirect', $request->get('redirect'));
+        }
         if ($request->isMethod('post')) {
             $request->validate([
                 'email' => 'required|exists:users',
@@ -17,6 +20,9 @@ class AuthController extends Controller
 
             $attempt = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
             if($attempt) {
+                if(session()->has('redirect')) {
+                    return redirect()->to(session()->get('redirect'));
+                }
                 return redirect()->route('index');
             }else {
                 return redirect()->back()->withErrors("E-posta veya şifre hatalı.")->withInput($request->all());

@@ -1,5 +1,5 @@
 <!-- Newsletter Start -->
-<div class="mb-3">
+<div id="subscribe-newsletter" class="mb-3">
     <div class="section-title mb-0">
         <h4 class="m-0 text-uppercase font-weight-bold">HABER BÜLTENİ</h4>
     </div>
@@ -7,6 +7,7 @@
         <p>En güncel haberler için haber bültenine abone olun</p>
         <form action="{{ route('newsletter-subscription') }}" method="POST">
             @csrf
+            <input type="hidden" name="scroll_to" value="subscribe-newsletter">
             <div class="input-group mb-2" style="width: 100%;">
                 <input type="email" class="form-control form-control" placeholder="E-posta Adresi" name="email" autocomplete="off">
                 <div class="input-group-append">
@@ -16,7 +17,7 @@
         </form>
         <div class="form-group text-center mb-0 mt-3">
             <p class="text-success">{{ session('message') }}</p>
-            <p class="text-danger">{{ @$errors->first() }}</p>
+            <p class="text-danger">{{ old('scroll_to') == 'subscribe-newsletter' ? @$errors->first() : "" }}</p>
         </div>
     </div>
 </div>

@@ -48,7 +48,7 @@
                     <!-- News Detail End -->
 
                     <!-- Comment List Start -->
-                    <div @class(['mb-3', 'd-none' => $news->comments->count() == 0])>
+                    <div id="comments" @class(['mb-3', 'd-none' => $news->comments->count() == 0])>
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">{{ $news->comments()->count() }} Yorum</h4>
                         </div>
@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-center pagination">
                                 {{ $news->comments->links() }}
                             </div>
                         </div>
@@ -70,24 +70,31 @@
                     <!-- Comment List End -->
 
                     <!-- Comment Form Start -->
-                    <div @class(['mb-3', 'd-none' => !auth()->check()])>
+                    <div id="make-comment" class="mb-3">
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">Yorum Bırak</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-4">
-                            <form method="POST" action="{{ route('single.add.comment', $news->id) }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="comment">Mesaj *</label>
-                                    <textarea id="comment" name="comment" cols="30" rows="5" class="form-control"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <p class="text-danger">{{ @$errors->first() }}</p>
-                                </div>
-                                <div class="form-group mb-0">
-                                    <input type="submit" value="Yorum Bırak" class="btn btn-primary font-weight-semi-bold py-2 px-3">
-                                </div>
-                            </form>
+                            @if (auth()->check())
+                                <form method="POST" action="{{ route('single.add.comment', $news->id) }}">
+                                    @csrf
+                                    <input type="hidden" name="scroll_to" value="make-comment">
+                                    <div class="form-group">
+                                        <label for="comment">Mesaj *</label>
+                                        <textarea id="comment" name="comment" cols="30" rows="5" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="text-danger">{{ old('scroll_to') == 'make-comment' ? @$errors->first() : '' }}</p>
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <input type="submit" value="Yorum Bırak" class="btn btn-primary font-weight-semi-bold py-2 px-3">
+                                    </div>
+                                </form>
+                            @else
+                                <p>
+                                    Yorum yapabilmek için giriş yapmalısınız. <a href="{{ route('login') }}?redirect={{ url()->current() }}">Giriş yap.</a>
+                                </p>
+                            @endif
                         </div>
                     </div>
                     <!-- Comment Form End -->

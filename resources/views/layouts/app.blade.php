@@ -192,6 +192,12 @@
         $('.nav-link').filter(function() {
             return this.href == window.location || window.location.href == this.href || window.location.href.indexOf($(this).data('indexof')) == 0;
         }).addClass('active');
+        if(window.location.href.indexOf("?page=") != -1) {
+            $('.pagination').parent().get(0).scrollIntoView({behaivor: 'smooth'});
+        }
+        @if ($errors->any())
+            $('#{{ old("scroll_to") }}').get(0).scrollIntoView({behaivor: 'smooth'});
+        @endif
     </script>
 
     @stack('script')

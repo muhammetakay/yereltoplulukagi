@@ -9,13 +9,14 @@
     <div class="container-fluid mt-5 pt-3">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div id="register" class="col-lg-8">
                     <div class="section-title mb-0">
                         <h4 class="m-0 text-uppercase font-weight-bold">Kayıt Ol</h4>
                     </div>
                     <div class="bg-white border border-top-0 p-4 mb-3">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
+                            <input type="hidden" name="scroll_to" value="register">
                             <div class="form-group">
                                 <input type="text" class="form-control p-4" placeholder="Ad Soyad" name="name" value="{{ old('name') }}" required="required"/>
                             </div>
@@ -29,7 +30,7 @@
                                 <input type="password" class="form-control p-4" placeholder="Şifre Tekrar" name="password_confirmation" required="required"/>
                             </div>
                             <div class="form-group">
-                                <span class="text-danger">{{ @$errors->first() }}</span>
+                                <span class="text-danger">{{ old('scroll_to') == 'register' ? @$errors->first() : '' }}</span>
                             </div>
                             <div class="mb-2">
                                 <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"
