@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">İletişim Mesajları</h1>
+                    <h1 class="page-header">Yorumlar</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -16,21 +16,23 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>İsim</th>
-                                    <th>E-posta</th>
-                                    <th>Konu</th>
-                                    <th>Mesaj</th>
+                                    <th>#</th>
+                                    <th>Yorum</th>
+                                    <th>Kullanıcı</th>
+                                    <th>Haber</th>
                                     <th>Tarih</th>
+                                    <th>Aksiyon</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($contacts as $item)
+                                @foreach ($comments as $item)
                                     <tr>
-                                        <td>{{ $item->fullname }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->subject }}</td>
-                                        <td>{{ $item->message }}</td>
-                                        <td data-order="{{ $item->created_at->timestamp }}">{{ $item->created_at->translatedFormat('H:i, j M Y') }}</td>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->comment }}</td>
+                                        <td>{{ $item->user->name }}</td>
+                                        <td>{{ $item->news->title }}</td>
+                                        <td data-order="{{ $item->created_at->timestamp }}">{{ $item->created_at->translatedFormat('j F Y, H:i') }}</td>
+                                        <td>-</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -58,7 +60,10 @@
                     url: '{{ asset("assets/backend/js/dataTables/tr.json") }}'
                 },
                 order: [
-                    [4, 'desc']
+                    [0, 'desc']
+                ],
+                columnDefs: [
+                    {"type": "num", "targets": [0]},
                 ]
             });
         });

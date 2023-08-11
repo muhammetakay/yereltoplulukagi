@@ -83,7 +83,7 @@
                                     class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ route('admin.users') }}">Kullanıcı Listesi</a>
+                                    <a href="{{ route('admin.users') }}">Kullanıcı Tablosu</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('admin.users.add') }}">Kullanıcı Ekle</a>
@@ -96,7 +96,10 @@
                                 class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ route('admin.news') }}">Haber Listesi</a>
+                                <a href="{{ route('admin.news') }}">Haber Tablosu</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.comments') }}">Yorum Tablosu</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.news.add') }}">Haber Ekle</a>
@@ -108,7 +111,7 @@
                                 class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ route('admin.events') }}">Etkinlik Listesi</a>
+                                <a href="{{ route('admin.events') }}">Etkinlik Tablosu</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.events.add') }}">Etkinlik Ekle</a>
@@ -116,7 +119,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ route('admin.contacts') }}"><i class="fa fa-address-book fa-fw"></i> İletişim Bildirimleri</a>
+                        <a href="{{ route('admin.contacts') }}"><i class="fa fa-address-book fa-fw"></i> İletişim Mesajları</a>
                     </li>
                 </ul>
             </div>

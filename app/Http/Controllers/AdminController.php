@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Event;
 use App\Models\News;
@@ -38,6 +39,12 @@ class AdminController extends Controller
     public function add_news(Request $request) {
         $user = auth()->user();
         return view('admin.news-add', compact('user'));
+    }
+    
+    public function comments() {
+        $user = auth()->user();
+        $comments = Comment::with(['news', 'user'])->get();
+        return view('admin.comments', compact('user', 'comments'));
     }
 
     public function events() {
