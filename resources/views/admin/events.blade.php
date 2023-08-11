@@ -16,6 +16,7 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Etkinlik Adı</th>
                                     <th>Tarihi</th>
                                     <th>Konumu</th>
@@ -26,6 +27,7 @@
                             <tbody>
                                 @foreach ($events as $item)
                                     <tr>
+                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td data-order="{{ $item->event_date->timestamp }}">{{ $item->event_date->translatedFormat('j F Y, H:i') }}</td>
                                         <td>{{ $item->location }}</td>
@@ -56,7 +58,13 @@
                 responsive: true,
                 language: {
                     url: '{{ asset("assets/backend/js/dataTables/tr.json") }}'
-                }
+                },
+                order: [
+                    [0, 'desc']
+                ],
+                columnDefs: [
+                    {"type": "num", "targets": [0]},
+                ]
             });
         });
     </script>

@@ -22,6 +22,10 @@ class News extends Model
         'user_id',
     ];
 
+    public function getTitleAttribute($value) {
+        return strtoupper_tr($value);
+    }
+
     // relations
 
     public function category() {

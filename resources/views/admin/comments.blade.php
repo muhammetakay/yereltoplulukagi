@@ -30,7 +30,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->comment }}</td>
                                         <td>{{ $item->user->name }}</td>
-                                        <td>{{ $item->news->title }}</td>
+                                        <td><a href="{{ route('single', $item->news->id) }}" target="_blank">{{ $item->news->title }}</a></td>
                                         <td data-order="{{ $item->created_at->timestamp }}">{{ $item->created_at->translatedFormat('j F Y, H:i') }}</td>
                                         <td>-</td>
                                     </tr>

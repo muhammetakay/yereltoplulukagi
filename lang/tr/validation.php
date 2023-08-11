@@ -16,7 +16,7 @@ return [
     'accepted' => 'The :attribute field must be accepted.',
     'accepted_if' => 'The :attribute field must be accepted when :other is :value.',
     'active_url' => 'The :attribute field must be a valid URL.',
-    'after' => 'The :attribute field must be a date after :date.',
+    'after' => ':Attribute alanı :date tarihinden sonra bir tarih olmalıdır.',
     'after_or_equal' => 'The :attribute field must be a date after or equal to :date.',
     'alpha' => 'The :attribute field must only contain letters.',
     'alpha_dash' => 'The :attribute field must only contain letters, numbers, dashes, and underscores.',
@@ -35,7 +35,7 @@ return [
     'can' => 'The :attribute field contains an unauthorized value.',
     'confirmed' => ':Attribute eşleşmiyor.',
     'current_password' => 'The password is incorrect.',
-    'date' => 'The :attribute field must be a valid date.',
+    'date' => ':Attribute alanı geçerli bir tarih olmalıdır.',
     'date_equals' => 'The :attribute field must be a date equal to :date.',
     'date_format' => 'The :attribute field must match the format :format.',
     'decimal' => 'The :attribute field must have :decimal decimal places.',
@@ -66,7 +66,7 @@ return [
         'numeric' => 'The :attribute field must be greater than or equal to :value.',
         'string' => 'The :attribute field must be greater than or equal to :value characters.',
     ],
-    'image' => 'The :attribute field must be an image.',
+    'image' => ':Attribute resim olmalıdır.',
     'in' => 'The selected :attribute is invalid.',
     'in_array' => 'The :attribute field must exist in :other.',
     'integer' => 'The :attribute field must be an integer.',
@@ -188,6 +188,22 @@ return [
         'subject' => 'Konu',
         'fullname' => 'İsim',
         'name' => 'Ad Soyad',
+        'image' => 'Haber Resmi',
+        'title' => 'Başlık',
+        'category' => 'Kategori',
+        'content' => 'Haber İçeriği',
+        'event_name' => 'Etkinlik Adı',
+        'event_date' => 'Etkinlik Tarihi',
+        'location' => 'Konum',
+        'organizer' => 'Organizatör',
+        'description' => 'Açıklama',
+        'event_image' => 'Etkinlik Resmi',
+    ],
+
+    'values' => [
+        'event_date' => [
+            'now' => 'şimdi'
+        ]
     ],
 
 ];

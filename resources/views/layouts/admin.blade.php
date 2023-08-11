@@ -85,9 +85,6 @@
                                 <li>
                                     <a href="{{ route('admin.users') }}">Kullanıcı Tablosu</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('admin.users.add') }}">Kullanıcı Ekle</a>
-                                </li>
                             </ul>
                         </li>
                     @endrole

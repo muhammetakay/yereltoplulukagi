@@ -21,6 +21,7 @@
                                     <th>Kategori</th>
                                     <th>Yazar</th>
                                     <th>Görüntülenme</th>
+                                    <th>Yorumlar</th>
                                     <th>Tarih</th>
                                     <th>Aksiyon</th>
                                 </tr>
@@ -29,10 +30,11 @@
                                 @foreach ($news_list as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->title }}</td>
+                                        <td><a href="{{ route('single', $item->id) }}" target="_blank">{{ $item->title }}</a></td>
                                         <td>{{ $item->category->name }}</td>
                                         <td>{{ $item->writer->name }}</td>
                                         <td>{{ $item->views }}</td>
+                                        <td>{{ $item->comments->count() }}</td>
                                         <td data-order="{{ $item->created_at->timestamp }}">{{ $item->created_at->translatedFormat('j F Y, H:i') }}</td>
                                         <td>-</td>
                                     </tr>
