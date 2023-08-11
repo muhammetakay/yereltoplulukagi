@@ -26,6 +26,8 @@ $(function() {
         }
     });
 
+    history.pushState('', '', window.location.pathname);
+
     var url = window.location;
     var element = $('ul.nav a').filter(function() {
         return this.href == url || url.href.match(this.href) == 0;

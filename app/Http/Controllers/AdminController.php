@@ -7,38 +7,59 @@ use App\Models\Contact;
 use App\Models\Event;
 use App\Models\News;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
 
-    public function index() {
+    public function index()
+    {
         $user = auth()->user();
-        return view('admin.dashboard', compact('user'));
+        $newComments = Comment::where('created_at', '>', now()->subDay())->count();
+        $newNews = News::where('created_at', '>', now()->subDay())->count();
+        $newEvents = Event::where('created_at', '>', now()->subDay())->count();
+        $newContacts = Contact::where('created_at', '>', now()->subDay())->count();
+        $newsChart = [];
+        for ($i = date("Y") - 1; $i <= date("Y"); $i++) {
+            for ($j = 1; $j <= 4; $j++) {
+                $startMonth = (($j - 1) * 3) + 1;
+                $endMonth = $j * 3;
+                array_push($newsChart, [
+                    "period" => "$i Q$j",
+                    "count" => News::whereBetween('created_at', [now()->setDate($i, $startMonth, 1), now()->setDate($i, $endMonth, 1)->endOfMonth()])->count(),
+                ]);
+            }
+        }
+        return view('admin.dashboard', compact('user', 'newComments', 'newNews', 'newEvents', 'newContacts', 'newsChart'));
     }
 
-    public function users() {
+    public function users()
+    {
         $user = auth()->user();
         $users = User::all();
         $roles = Role::all();
         return view('admin.users', compact('user', 'users', 'roles'));
     }
 
-    public function add_users(Request $request) {
+    public function add_users(Request $request)
+    {
         $user = auth()->user();
         return view('admin.users-add', compact('user'));
     }
 
-    public function news() {
+    public function news()
+    {
         $user = auth()->user();
         $news_list = News::with(['category', 'writer'])->get();
         return view('admin.news', compact('user', 'news_list'));
     }
 
-    public function add_news(Request $request) {
+    public function add_news(Request $request)
+    {
         $user = auth()->user();
-        if($request->isMethod('post')) {
+        if ($request->isMethod('post')) {
             $request->validate([
                 'title' => 'required',
                 'content' => 'required',
@@ -61,22 +82,25 @@ class AdminController extends Controller
         }
         return view('admin.news-add', compact('user'));
     }
-    
-    public function comments() {
+
+    public function comments()
+    {
         $user = auth()->user();
         $comments = Comment::with(['news', 'user'])->get();
         return view('admin.comments', compact('user', 'comments'));
     }
 
-    public function events() {
+    public function events()
+    {
         $user = auth()->user();
         $events = Event::all();
         return view('admin.events', compact('user', 'events'));
     }
 
-    public function add_events(Request $request) {
+    public function add_events(Request $request)
+    {
         $user = auth()->user();
-        if($request->isMethod('post')) {
+        if ($request->isMethod('post')) {
             $request->validate([
                 'event_name' => 'required',
                 'event_date' => 'required|date|after:now',
@@ -103,7 +127,8 @@ class AdminController extends Controller
         return view('admin.events-add', compact('user'));
     }
 
-    public function contacts() {
+    public function contacts()
+    {
         $user = auth()->user();
         $contacts = Contact::all();
         return view('admin.contacts', compact('user', 'contacts'));

@@ -28,7 +28,7 @@
                                 @foreach ($events as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td>
+                                        <td><a href="{{ route('event', $item->id) }}" target="_blank">{{ $item->name }}</a></td>
                                         <td data-order="{{ $item->event_date->timestamp }}">{{ $item->event_date->translatedFormat('j F Y, H:i') }}</td>
                                         <td>{{ $item->location }}</td>
                                         <td>{{ $item->organizer }}</td>
