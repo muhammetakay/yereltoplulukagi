@@ -27,11 +27,11 @@ class EventFactory extends Factory
     {
         return [
             'name' => ucwords($this->faker->words(3, true)),
-            'event_date' => $this->faker->dateTimeThisMonth,
+            'event_date' => $this->faker->dateTimeBetween(now(), now()->addYear()),
             'location' => $this->faker->city,
             'organizer' => $this->faker->company,
             'description' => $this->faker->paragraph,
-            'image_path' => 'assets/uploads/event-1.png'
+            'image_path' => getRandomNewsImage()
         ];
     }
 }

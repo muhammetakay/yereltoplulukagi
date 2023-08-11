@@ -31,4 +31,8 @@ class News extends Model
     public function writer() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class, 'news_id', 'id');
+    }
 }

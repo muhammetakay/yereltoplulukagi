@@ -26,9 +26,14 @@ class NewsFactory extends Factory
      */
     public function definition(): array
     {
+        $paragraps = $this->faker->paragraphs(rand(2, 6));
+        $content = "";
+        foreach ($paragraps as $p) {
+            $content .= "$p\r\n\r\n";
+        }
         return [
-            'title' => ucwords($this->faker->words(3, true)),
-            'content' => $this->faker->paragraphs(rand(2,5), true),
+            'title' => ucwords($this->faker->realText(75, 2)),
+            'content' => $content,
             'category_id' => Category::all()->random()->id,
             'user_id' => User::all()->random()->id,
             'views' => rand(0, 1e3),

@@ -1,5 +1,5 @@
 <!-- Social Follow Start -->
-<div class="mb-3">
+<div class="mb-3 d-none">
     <div class="section-title mb-0">
         <h4 class="m-0 text-uppercase font-weight-bold">BİZİ TAKİP ET</h4>
     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ ucwords_tr(mb_strtolower($category->name)) }}
+    Etkinlikler
 @endsection
 
 @section('content')
@@ -13,38 +13,43 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="section-title">
-                                <h4 class="m-0 text-uppercase font-weight-bold">KATEGORİ: {{ $category->name }}</h4>
+                                <h4 class="m-0 text-uppercase font-weight-bold">ETKİNLİKLER</h4>
                             </div>
                         </div>
-                        @foreach ($categoryNews as $item)
+                        @foreach ($events as $item)
                             <div class="col-lg-6">
                                 <div class="position-relative mb-3">
                                     <img class="img-fluid w-100" src="{{ asset($item->image_path) }}" style="object-fit: cover;">
                                     <div class="bg-white border border-top-0 p-4">
                                         <div class="mb-2">
-                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                href="{{ route('category', $item->category->id) }}">{{ $item->category->name }}</a>
-                                            <a class="text-body"><small>{{ $item->created_at->translatedFormat('M j, Y') }}</small></a>
+                                            <span class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">
+                                                <i class="fa fa-location-arrow mr-2"></i>{{ $item->location }}</span>
                                         </div>
-                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap" href="{{ route('single', $item->id) }}">{{ $item->title }}</a>
-                                        <p class="m-0" style="display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; -webkit-box-orient: vertical;">{!! $item->content !!}</p>
+                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap" href="{{ route('event', $item->id) }}">{{ $item->name }}</a>
+                                        <p class="m-0" style="display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; -webkit-box-orient: vertical;">{!! $item->description !!}</p>
                                     </div>
                                     <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle mr-2" src="{{ asset('assets/img/user.jpg') }}" width="25" height="25" alt="">
-                                            <small>{{ $item->writer->name }}</small>
+                                            <small>{{ $item->organizer }}</small>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <small class="ml-3"><i class="far fa-eye mr-2"></i>{{ $item->views }}</small>
-                                            <small class="ml-3"><i class="far fa-comment mr-2"></i>{{ $item->comments->count() }}</small>
+                                            <small class="ml-3"><i class="far fa-calendar mr-2"></i>{{ $item->event_date->translatedFormat('j M Y') }}</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
+                        @if ($events->count() == 0)
+                            <div class="col-12">
+                                <div class="bg-white border border-top-0 p-4 mb-3 text-dark">
+                                    Güncel etkinlik bulunamadı.
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     <div class="row justify-content-center">
-                        {{ $categoryNews->links() }}
+                        {{ $events->links() }}
                     </div>
                 </div>
                 

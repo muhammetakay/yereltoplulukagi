@@ -17,16 +17,19 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control p-4" placeholder="Ad Soyad" name="name" required="required"/>
+                                <input type="text" class="form-control p-4" placeholder="Ad Soyad" name="name" value="{{ old('name') }}" required="required"/>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control p-4" placeholder="E-posta" name="email" required="required"/>
+                                <input type="text" class="form-control p-4" placeholder="E-posta" name="email" value="{{ old('email') }}" required="required"/>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control p-4" placeholder="Şifre" name="password" required="required"/>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control p-4" placeholder="Şifre Tekrar" name="password_confirmation" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <span class="text-danger">{{ @$errors->first() }}</span>
                             </div>
                             <div class="mb-2">
                                 <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"

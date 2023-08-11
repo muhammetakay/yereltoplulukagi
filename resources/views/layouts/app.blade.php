@@ -11,7 +11,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -60,19 +60,19 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-auto mr-n2">
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.facebook.com/yereltoplulukagi"><small class="fab fa-facebook-f"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://twitter.com/yereltoplulukagi"><small class="fab fa-twitter"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-linkedin-in"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.linkedin.com/in/yereltoplulukagi"><small class="fab fa-linkedin-in"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-instagram"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.instagram.com/yereltoplulukagi"><small class="fab fa-instagram"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-youtube"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.youtube.com/@@yereltoplulukagi"><small class="fab fa-youtube"></small></a>
                         </li>
                     </ul>
                 </nav>
@@ -81,7 +81,8 @@
         <div class="row align-items-center bg-white py-3 px-lg-5">
             <div class="col-lg-4">
                 <a href="{{ route('index') }}" class="navbar-brand p-0 d-none d-lg-block">
-                    <h1 class="m-0 display-4 text-uppercase text-primary">Yerel<span class="text-secondary font-weight-normal">Topluluk Ağı</span></h1>
+                    <h1 class="m-0 display-4 text-uppercase text-primary">Yerel<span
+                            class="text-secondary font-weight-normal">Topluluk Ağı</span></h1>
                 </a>
             </div>
         </div>
@@ -93,25 +94,26 @@
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
             <a href="{{ route('index') }}" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-white font-weight-normal">News</span></h1>
+                <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span
+                        class="text-white font-weight-normal">News</span></h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="{{ route('index') }}" class="nav-item nav-link active">ANASAYFA</a>
-                    <a href="{{ route('category', ['slug' => 'business']) }}" class="nav-item nav-link">KATEGORİ</a>
-                    <a href="{{ route('single', ['slug' => 'lorem-ipsum']) }}" class="nav-item nav-link">Tek Haber</a>
+                    <a href="{{ route('index') }}" class="nav-item nav-link">ANASAYFA</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-indexof="{{ route('category') }}">KATEGORİLER</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            @foreach (getAllCategories() as $item)
+                                <a href="{{ route('category', $item->id) }}" class="dropdown-item">{{ $item->name }}</a>    
+                            @endforeach
+                        </div>
+                    </div>
+                    <a href="{{ route('events') }}" class="nav-item nav-link" data-indexof="{{ route('event') }}">ETKİNLİKLER</a>
                     <a href="{{ route('contact') }}" class="nav-item nav-link">İLETİŞİM</a>
                 </div>
-                {{-- <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
-                    <input type="text" class="form-control border-0" placeholder="Keyword">
-                    <div class="input-group-append">
-                        <button class="input-group-text bg-primary text-dark border-0 px-3"><i
-                                class="fa fa-search"></i></button>
-                    </div>
-                </div> --}}
             </div>
         </nav>
     </div>
@@ -130,67 +132,46 @@
                 <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@yereltoplulukagi.com</p>
                 <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">BİZİ TAKİP ET</h6>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://www.facebook.com/yereltoplulukagi"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://twitter.com/yereltoplulukagi"><i
+                            class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://www.linkedin.com/in/yereltoplulukagi"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://www.instagram.com/yereltoplulukagi"><i
+                            class="fab fa-instagram"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square" rel="nofollow" target="_blank" href="https://www.youtube.com/@@yereltoplulukagi"><i
+                            class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">POPÜLER HABERLER</h5>
-                <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                @foreach (getPopularNews(3) as $item)
+                    <div class="mb-3">
+                        <div class="mb-2">
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                href="{{ route('category', $item->category->id) }}">{{ $item->category->name }}</a>
+                            <a class="text-body"><small>{{ $item->created_at->translatedFormat('M j, Y') }}</small></a>
+                        </div>
+                        <a class="small text-body text-uppercase font-weight-medium"
+                            href="{{ route('single', $item->id) }}">{{ $item->title }}</a>
                     </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
-                <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
-                <div class="">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
-                </div>
+                @endforeach
             </div>
             <div class="col-lg-4 col-md-6 mb-5">
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">KATEGORİLER</h5>
                 <div class="m-n1">
-                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+                    @foreach (getAllCategories() as $item)
+                        <a href="{{ route('category', $item->id) }}"
+                            class="btn btn-sm btn-secondary m-1">{{ $item->name }}</a>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
     <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-        <p class="m-0 text-center">&copy; <a href="{{ route('index') }}">{{ config('app.name') }}</a>. Tüm Hakları Saklıdır.
+        <p class="m-0 text-center">&copy; <a href="{{ route('index') }}">{{ config('app.name') }}</a>. Tüm Hakları
+            Saklıdır.
     </div>
     <!-- Footer End -->
 
@@ -207,6 +188,13 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+        $('.nav-link').filter(function() {
+            return this.href == window.location || window.location.href == this.href || window.location.href.indexOf($(this).data('indexof')) == 0;
+        }).addClass('active');
+    </script>
+
+    @stack('script')
 </body>
 
 </html>

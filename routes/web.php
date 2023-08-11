@@ -22,9 +22,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function() {
     Route::get('/', 'index')->name('index');
-    Route::get('contact', 'contact')->name('contact');
-    Route::get('category/{slug?}', 'category')->name('category');
-    Route::get('single/{slug?}', 'single')->name('single');
+    Route::any('contact', 'contact')->name('contact');
+    Route::get('category/{id?}', 'category')->name('category');
+    Route::get('single/{id?}', 'single')->name('single');
+    Route::post('single/{id}/add-comment', 'singleAddComment')->name('single.add.comment');
+    Route::get('events', 'events')->name('events');
+    Route::get('event/{id?}', 'event')->name('event');
+    Route::post('newsletter-subscription', 'newsletterSubscription')->name('newsletter-subscription');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function() {
