@@ -32,7 +32,7 @@ class CategorySeeder extends Seeder
             ['name' => 'Oyun'],
             ['name' => 'Moda'],
             ['name' => 'Kültür Sanat'],
-            ['name' => 'Astoloji'],
+            ['name' => 'Astroloji'],
             ['name' => 'Sosyal Medya'],
             ['name' => 'İnternet'],
             ['name' => 'Dünya'],
