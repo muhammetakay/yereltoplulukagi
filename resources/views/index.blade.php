@@ -13,7 +13,7 @@
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                     href="{{ route('category', $item->category->id) }}">{{ $item->category->name }}</a>
-                                <a class="text-white" href="">{{ $item->created_at->translatedFormat('M j, Y') }}</a>
+                                <a class="text-white">{{ $item->created_at->translatedFormat('M j, Y') }}</a>
                             </div>
                             <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="{{ route('single', $item->id) }}">{{ $item->title }}</a>
                         </div>
@@ -31,7 +31,7 @@
                                 <div class="mb-2">
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                         href="{{ route('category', $item->category->id) }}">{{ $item->category->name }}</a>
-                                    <a class="text-white" href=""><small>{{ $item->created_at->translatedFormat('M j, Y') }}</small></a>
+                                    <a class="text-white"><small>{{ $item->created_at->translatedFormat('M j, Y') }}</small></a>
                                 </div>
                                 <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('single', $item->id) }}">{{ $item->title }}</a>
                             </div>
@@ -58,7 +58,7 @@
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                     href="{{ route('category', $item->category->id) }}">{{ $item->category->name }}</a>
-                                <a class="text-white" href=""><small>{{ $item->created_at->translatedFormat('M j, Y') }}</small></a>
+                                <a class="text-white"><small>{{ $item->created_at->translatedFormat('M j, Y') }}</small></a>
                             </div>
                             <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('single', $item->id) }}" style="display: -webkit-box; -webkit-line-clamp: 2; overflow: hidden; -webkit-box-orient: vertical;">{{ $item->title }}</a>
                         </div>
