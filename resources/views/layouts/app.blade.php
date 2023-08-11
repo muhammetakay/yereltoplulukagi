@@ -198,6 +198,9 @@
         @if ($errors->any())
             $('#{{ old("scroll_to") }}').get(0).scrollIntoView({behavior: 'smooth'});
         @endif
+        @if (session()->has('scroll_to'))
+            $('#{{ session("scroll_to") }}').get(0).scrollIntoView({behavior: 'smooth'});
+        @endif
     </script>
 
     @stack('script')

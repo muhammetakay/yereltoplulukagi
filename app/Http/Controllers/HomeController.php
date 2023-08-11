@@ -70,7 +70,7 @@ class HomeController extends Controller
             'news_id' => $id
         ]);
         
-        return redirect()->back()->with('scrollElement', 'comments');
+        return redirect()->back()->with('scroll_to', 'comments');
     }
 
     public function events(Request $request) {
