@@ -35,10 +35,20 @@ function strtoupper_tr($str)
 }
 
 /**
+ * Turkish strtolower
+ */
+function strtolower_tr($str) 
+{
+    $search = array("Ç","İ","I","Ğ","Ö","Ş","Ü");
+    $replace = array("ç","i","ı","ğ","ö","ş","ü");
+    return mb_strtolower(str_replace($search, $replace, $str));
+}
+
+/**
  * Turkish ucwords
  */
 function ucwords_tr($str) 
 {
-    $str = mb_strtolower($str);
+    $str = strtolower_tr($str);
     return str_replace('i̇','i',ltrim(mb_convert_case(str_replace(array('i','I'),array('İ','ı'),$str),MB_CASE_TITLE,'UTF-8')));
 }

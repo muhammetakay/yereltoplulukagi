@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ ucwords_tr(mb_strtolower($category->name)) }}
+    {{ ucwords_tr(strtolower_tr($category->name)) }}
 @endsection
 
 @section('content')
