@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,10 @@ Route::controller(AuthController::class)->middleware('guest')->group(function() 
     Route::any('login', 'login')->name('login');
     Route::any('register', 'register')->name('register');
     Route::any('logout', 'logout')->name('logout')->withoutMiddleware('guest');
+});
+
+Route::controller(UserController::class)->middleware('auth')->prefix('user')->name('user.')->group(function() {
+    Route::get('/', 'index')->name('index');
+    Route::any('change-password', 'change_password')->name('change-password');
+    Route::post('store', 'store')->name('store');
 });

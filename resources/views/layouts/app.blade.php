@@ -45,6 +45,9 @@
                                     <a class="nav-link text-body small" href="{{ route('admin.index') }}">Admin</a>
                                 </li>
                             @endrole
+                            <li class="nav-item border-right border-secondary">
+                                <a class="nav-link text-body small" href="{{ route('user.index') }}">Ayarlar</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-body small" href="{{ route('logout') }}">Çıkış yap</a>
                             </li>
