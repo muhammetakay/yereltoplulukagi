@@ -22,7 +22,8 @@ class AdminController extends Controller
         $newEvents = Event::where('created_at', '>', now()->subDay())->count();
         $newContacts = Contact::where('created_at', '>', now()->subDay())->count();
         $newsChart = [];
-        for ($i = date("Y") - 1; $i <= date("Y"); $i++) {
+        $year = intval(date("Y"));
+        for ($i = $year - 1; $i <= $year; $i++) {
             for ($j = 1; $j <= 4; $j++) {
                 $startMonth = (($j - 1) * 3) + 1;
                 $endMonth = $j * 3;
@@ -32,7 +33,17 @@ class AdminController extends Controller
                 ]);
             }
         }
-        return view('admin.dashboard', compact('user', 'newComments', 'newNews', 'newEvents', 'newContacts', 'newsChart'));
+        $donutChart = [];
+        $month = intval(date("m"));
+        for ($i=2; $i >= 0; $i--) {
+            $startDate = now()->subMonths($i);
+            $endDate = now()->subMonths($i);
+            array_push($donutChart, [
+                "label" => $startDate->translatedFormat("F"),
+                "value" => News::whereBetween('created_at', [$startDate->startOfMonth(), $endDate->endOfMonth()])->sum('views'),
+            ]);
+        }
+        return view('admin.dashboard', compact('user', 'newComments', 'newNews', 'newEvents', 'newContacts', 'newsChart', 'donutChart'));
     }
 
     public function users()

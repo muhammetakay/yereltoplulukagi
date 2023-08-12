@@ -31,6 +31,7 @@ class NewsFactory extends Factory
         foreach ($paragraps as $p) {
             $content .= "$p\r\n\r\n";
         }
+        $date = now()->subDays(rand(0, 90))->subHours(rand(0, 24))->subMinutes(rand(0, 60))->subSeconds(rand(0, 60));
         return [
             'title' => ucwords($this->faker->realText(75, 2)),
             'content' => $content,
@@ -38,6 +39,8 @@ class NewsFactory extends Factory
             'user_id' => User::all()->random()->id,
             'views' => rand(0, 1e3),
             'image_path' => getRandomNewsImage(),
+            'created_at' => $date,
+            'updated_at' => $date,
         ];
     }
 }
