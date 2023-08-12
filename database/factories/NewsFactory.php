@@ -37,7 +37,7 @@ class NewsFactory extends Factory
             'content' => $content,
             'category_id' => Category::all()->random()->id,
             'user_id' => User::all()->random()->id,
-            'views' => rand(0, 1e3),
+            'views' => rand(0, 1e4),
             'image_path' => getRandomNewsImage(),
             'created_at' => $date,
             'updated_at' => $date,
