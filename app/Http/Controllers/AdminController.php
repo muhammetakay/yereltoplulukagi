@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Event;
@@ -9,6 +10,7 @@ use App\Models\News;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
@@ -241,5 +243,54 @@ class AdminController extends Controller
         $user = auth()->user();
         $contacts = Contact::all();
         return view('admin.contacts', compact('user', 'contacts'));
+    }
+
+    public function categories()
+    {
+        $user = auth()->user();
+        $categories = Category::all();
+        return view('admin.categories', compact('user', 'categories'));
+    }
+
+    public function add_categories(Request $request)
+    {
+        $user = auth()->user();
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'category_name' => 'required|unique:categories,name',
+            ]);
+
+            Category::create([
+                'name' => $request->category_name,
+            ]);
+
+            return redirect()->back()->with('message', 'Kategori başarıyla eklendi.');
+        }
+        return view('admin.categories-add', compact('user'));
+    }
+
+    public function edit_categories(Request $request, $id)
+    {
+        $user = auth()->user();
+        $category = Category::where('id', $id)->first();
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'category_name' => ['required', Rule::unique('categories', 'name')->ignore($category->id)],
+            ]);
+
+            $category->update([
+                'name' => $request->category_name
+            ]);
+            return redirect()->route('admin.categories');
+        }
+        return view('admin.categories-edit', compact('user', 'category'));
+    }
+
+    public function delete_categories(Request $request, $id)
+    {
+        $category = Category::where('id', $id)->first();
+        $category->delete();
+
+        return redirect()->back();
     }
 }

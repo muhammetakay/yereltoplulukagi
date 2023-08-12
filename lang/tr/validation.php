@@ -198,6 +198,7 @@ return [
         'organizer' => 'Organizatör',
         'description' => 'Açıklama',
         'event_image' => 'Etkinlik Resmi',
+        'category_name' => 'Kategori Adı',
     ],
 
     'values' => [

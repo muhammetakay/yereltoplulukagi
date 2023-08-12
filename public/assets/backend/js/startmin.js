@@ -34,5 +34,13 @@ $(function() {
     }).addClass('active').parent().parent().addClass('in').parent();
     if (element.is('li')) {
         element.addClass('active');
+        while (element.parents('.collapse').length > 0) {
+            element = element.parents('.collapse');
+            element.addClass('in');
+            element = element.parent();
+            if(element.is('li')) {
+                element.addClass('active');
+            }
+        }
     }
 });

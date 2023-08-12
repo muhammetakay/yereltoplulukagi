@@ -101,6 +101,18 @@
                             <li>
                                 <a href="{{ route('admin.news.add') }}">Haber Ekle</a>
                             </li>
+                            <li>
+                                <a href="#">Kategoriler <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="{{ route('admin.categories') }}">Kategori Tablosu</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('admin.categories.add') }}">Kategori Ekle</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-third-level -->
+                            </li>
                         </ul>
                     </li>
                     <li>
