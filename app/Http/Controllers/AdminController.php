@@ -102,11 +102,58 @@ class AdminController extends Controller
         return view('admin.news-add', compact('user'));
     }
 
+    public function edit_news(Request $request, $id)
+    {
+        $user = auth()->user();
+        $news = News::where('id', $id)->first();
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'title' => 'required',
+                'content' => 'required',
+                'category' => 'required|exists:categories,id',
+                'image' => 'image|nullable'
+            ]);
+
+            $changes = [
+                'title' => $request->title,
+                'content' => $request->content,
+                'category_id' => $request->category,
+            ];
+
+            if($request->has('image')) {
+                $fileName = time() . '.' . $request->image->extension();
+                $request->image->storeAs('public/uploads', $fileName);
+                $changes['image_path'] = 'storage/uploads/' . $fileName;
+            }
+
+            $news->update($changes);
+            return redirect()->route('admin.news');
+            // return redirect()->back()->with('message', 'Haber başarıyla düzenlendi.');
+        }
+        return view('admin.news-edit', compact('user', 'news'));
+    }
+
+    public function delete_news(Request $request, $id)
+    {
+        $news = News::where('id', $id)->first();
+        $news->delete();
+
+        return redirect()->back();
+    }
+
     public function comments()
     {
         $user = auth()->user();
         $comments = Comment::with(['news', 'user'])->get();
         return view('admin.comments', compact('user', 'comments'));
+    }
+
+    public function delete_comments(Request $request, $id)
+    {
+        $comment = Comment::where('id', $id)->first();
+        $comment->delete();
+
+        return redirect()->back();
     }
 
     public function events()

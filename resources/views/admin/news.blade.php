@@ -36,7 +36,14 @@
                                         <td>{{ $item->views }}</td>
                                         <td>{{ $item->comments->count() }}</td>
                                         <td data-order="{{ $item->created_at->timestamp }}">{{ $item->created_at->translatedFormat('j F Y, H:i') }}</td>
-                                        <td>-</td>
+                                        <td>
+                                            <a class="btn btn-default" href="{{ route('admin.news.edit', ['id' => $item->id]) }}" title="Düzenle">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a class="btn btn-default" href="{{ route('admin.news.delete', ['id' => $item->id]) }}" title="Sil! Geri alınamaz.">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
