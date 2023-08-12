@@ -92,6 +92,6 @@ class HomeController extends Controller
         NewsletterSubscription::create([
             'email' => $request->get('email'),
         ]);
-        return redirect()->back()->with('message', 'Haber bültenine abone oldunuz!');
+        return redirect()->back()->with(['message' => 'Haber bültenine abone oldunuz!', 'scroll_to' => 'subscribe-newsletter']);
     }
 }
