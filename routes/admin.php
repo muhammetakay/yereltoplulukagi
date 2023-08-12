@@ -25,6 +25,6 @@ Route::controller(AdminController::class)->group(function() {
     // admin role
     Route::middleware('role:admin')->group(function() {
         Route::get('users', 'users')->name('users');
-        Route::any('users/add', 'add_users')->name('users.add');
+        Route::get('users/add-role/{role}/{id}', 'add_role_users')->name('users.add-role');
     });
 });

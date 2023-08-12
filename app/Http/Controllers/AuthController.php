@@ -20,6 +20,11 @@ class AuthController extends Controller
 
             $attempt = Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'));
             if($attempt) {
+                $user = Auth::user();
+                if($user->hasRole('banned')) {
+                    Auth::logout();
+                    return redirect()->back()->withErrors("Hesabınız banlanmıştır.")->withInput($request->all());
+                }
                 if(session()->has('redirect')) {
                     return redirect()->to(session()->get('redirect'));
                 }

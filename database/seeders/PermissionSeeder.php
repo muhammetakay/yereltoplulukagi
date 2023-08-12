@@ -16,6 +16,7 @@ class PermissionSeeder extends Seeder
     {
         Role::findOrCreate('admin');
         Role::findOrCreate('moderator');
+        Role::findOrCreate('banned');
 
         $user = User::where('id', 1)->first();
         $user->assignRole('admin');

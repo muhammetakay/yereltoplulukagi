@@ -54,10 +54,18 @@ class AdminController extends Controller
         return view('admin.users', compact('user', 'users', 'roles'));
     }
 
-    public function add_users(Request $request)
+    public function add_role_users(Request $request, $role, $id)
     {
-        $user = auth()->user();
-        return view('admin.users-add', compact('user'));
+        $user = User::where('id', $id)->first();
+        if(!in_array($role, Role::all()->pluck('name')->toArray())) {
+            return redirect()->back()->withErrors('Rol bulunamadı');
+        }
+        if($user->hasRole($role)) {
+            $user->removeRole($role);
+        }else {
+            $user->assignRole($role);
+        }
+        return redirect()->back();
     }
 
     public function news()
