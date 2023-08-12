@@ -41,7 +41,7 @@
                             </div>
                             <div class="d-flex align-items-center">
                                 <span class="ml-3"><i class="far fa-eye mr-2"></i>{{ $news->views }}</span>
-                                <span class="ml-3"><i class="far fa-comment mr-2"></i>{{ $news->comments->count() }}</span>
+                                <span class="ml-3"><i class="far fa-comment mr-2"></i>{{ $news->comments()->count() }}</span>
                             </div>
                         </div>
                     </div>
