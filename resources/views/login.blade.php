@@ -18,12 +18,19 @@
                             @csrf
                             <input type="hidden" name="scroll_to" value="login">
                             <div class="form-group">
-                                <input type="text" class="form-control p-4" placeholder="E-posta" name="email" value="{{ old('email') }}" required="required"/>
+                                <input type="text" class="form-control p-4" placeholder="E-posta" name="email"
+                                    value="{{ old('email') }}" required="required" />
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control p-4" placeholder="Şifre" name="password" required="required"/>
+                                <input type="password" class="form-control p-4" placeholder="Şifre" name="password"
+                                    required="required" />
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                                <label class="form-check-label text-dark" for="remember">Beni hatırla</label>
                             </div>
                             <div class="form-group">
+                                <span class="text-success">{{ session('message') }}</span>
                                 <span class="text-danger">{{ old('scroll_to') == 'login' ? @$errors->first() : '' }}</span>
                             </div>
                             <div class="mb-2">

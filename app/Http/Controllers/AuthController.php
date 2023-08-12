@@ -18,7 +18,7 @@ class AuthController extends Controller
                 'password' => 'required',
             ]);
 
-            $attempt = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+            $attempt = Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'));
             if($attempt) {
                 if(session()->has('redirect')) {
                     return redirect()->to(session()->get('redirect'));
@@ -40,14 +40,13 @@ class AuthController extends Controller
                 'password' => 'required|confirmed',
             ]);
 
-            $user = User::create([
+            User::create([
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
                 'password' => $request->get('password'),
             ]);
 
-            Auth::login($user);
-            return redirect()->route('index');
+            return redirect()->route('login')->with('message', 'Başarıyla kayıt oldunuz. Hesabınıza giriş yapın.');
         }
 
         return view('register');
