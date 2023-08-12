@@ -63,19 +63,19 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-auto mr-n2">
                         <li class="nav-item">
-                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.facebook.com/yereltoplulukagi"><small class="fab fa-facebook-f"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.facebook.com/{{ env('SOCIAL_USERNAME') }}"><small class="fab fa-facebook-f"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://twitter.com/yereltoplulukagi"><small class="fab fa-twitter"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://twitter.com/{{ env('SOCIAL_USERNAME') }}"><small class="fab fa-twitter"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.linkedin.com/in/yereltoplulukagi"><small class="fab fa-linkedin-in"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.linkedin.com/in/{{ env('SOCIAL_USERNAME') }}"><small class="fab fa-linkedin-in"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.instagram.com/yereltoplulukagi"><small class="fab fa-instagram"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.instagram.com/{{ env('SOCIAL_USERNAME') }}"><small class="fab fa-instagram"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.youtube.com/@@yereltoplulukagi"><small class="fab fa-youtube"></small></a>
+                            <a class="nav-link text-body" rel="nofollow" target="_blank" href="https://www.youtube.com/@@<?= env('SOCIAL_USERNAME') ?>"><small class="fab fa-youtube"></small></a>
                         </li>
                     </ul>
                 </nav>
@@ -135,15 +135,15 @@
                 <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@yereltoplulukagi.com</p>
                 <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">BİZİ TAKİP ET</h6>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://www.facebook.com/yereltoplulukagi"><i
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://www.facebook.com/{{ env('SOCIAL_USERNAME') }}"><i
                             class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://twitter.com/yereltoplulukagi"><i
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://twitter.com/{{ env('SOCIAL_USERNAME') }}"><i
                             class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://www.linkedin.com/in/yereltoplulukagi"><i
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://www.linkedin.com/in/{{ env('SOCIAL_USERNAME') }}"><i
                             class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://www.instagram.com/yereltoplulukagi"><i
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" rel="nofollow" target="_blank" href="https://www.instagram.com/{{ env('SOCIAL_USERNAME') }}"><i
                             class="fab fa-instagram"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square" rel="nofollow" target="_blank" href="https://www.youtube.com/@@yereltoplulukagi"><i
+                    <a class="btn btn-lg btn-secondary btn-lg-square" rel="nofollow" target="_blank" href="https://www.youtube.com/@@<?= env('SOCIAL_USERNAME') ?>"><i
                             class="fab fa-youtube"></i></a>
                 </div>
             </div>
