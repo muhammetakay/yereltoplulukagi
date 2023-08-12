@@ -33,7 +33,7 @@
                                         <td><a href="{{ route('single', $item->news->id) }}" target="_blank">{{ $item->news->title }}</a></td>
                                         <td data-order="{{ $item->created_at->timestamp }}">{{ $item->created_at->translatedFormat('j F Y, H:i') }}</td>
                                         <td>
-                                            <a class="btn btn-default" href="{{ route('admin.comments.delete', ['id' => $item->id]) }}" title="Sil">
+                                            <a class="btn btn-default" href="{{ route('admin.comments.delete', ['id' => $item->id]) }}" data-toggle="tooltip" data-placement="top" title="Sil">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>

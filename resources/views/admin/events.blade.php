@@ -33,10 +33,10 @@
                                         <td>{{ $item->location }}</td>
                                         <td>{{ $item->organizer }}</td>
                                         <td>
-                                            <a class="btn btn-default" href="{{ route('admin.events.edit', ['id' => $item->id]) }}" title="Düzenle">
+                                            <a class="btn btn-default" href="{{ route('admin.events.edit', ['id' => $item->id]) }}" data-toggle="tooltip" data-placement="top" title="Düzenle">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
-                                            <a class="btn btn-default" href="{{ route('admin.events.delete', ['id' => $item->id]) }}" title="Sil! Geri alınamaz.">
+                                            <a class="btn btn-default" href="{{ route('admin.events.delete', ['id' => $item->id]) }}" data-toggle="tooltip" data-placement="top" title="Sil">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>

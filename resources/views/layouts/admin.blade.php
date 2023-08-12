@@ -96,10 +96,10 @@
                                 <a href="{{ route('admin.news') }}">Haber Tablosu</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.comments') }}">Yorum Tablosu</a>
+                                <a href="{{ route('admin.news.add') }}">Haber Ekle</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.news.add') }}">Haber Ekle</a>
+                                <a href="{{ route('admin.comments') }}">Yorum Tablosu</a>
                             </li>
                             <li>
                                 <a href="#">Kategoriler <span class="fa arrow"></span></a>
@@ -151,6 +151,10 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('assets/backend/js/startmin.js') }}"></script>
+
+    <script>
+        $('*[data-toggle="tooltip"]').tooltip();
+    </script>
 
     @stack('script')
 </body>

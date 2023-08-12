@@ -32,16 +32,16 @@
                                         <td>
                                             <span>{{ $item->email }}</span>
                                             @if ($item->email_verified_at)
-                                                <i class="fa fa-check-circle text-success" title="Doğrulandı"></i>
+                                                <i class="fa fa-check-circle text-success" data-toggle="tooltip" data-placement="top" title="Doğrulandı"></i>
                                             @endif
                                         </td>
                                         <td data-order="{{ $item->created_at->timestamp }}">{{ $item->created_at->translatedFormat('j F Y, H:i') }}</td>
                                         <td>{{ $item->hasAnyRole($roles) ? implode(', ', array_map('ucfirst', $item->roles->pluck('name')->toArray())) : '-' }}</td>
                                         <td>
-                                            <a class="btn btn-default" href="{{ route('admin.users.add-role', ['id' => $item->id, 'role' => 'moderator']) }}" title="{{ !$item->hasRole('moderator') ? "Moderatör yap" : "Moderatörlüğü geri al" }}">
+                                            <a class="btn btn-default" href="{{ route('admin.users.add-role', ['id' => $item->id, 'role' => 'moderator']) }}" data-toggle="tooltip" data-placement="top" title="{{ !$item->hasRole('moderator') ? "Moderatör yap" : "Moderatörlüğü geri al" }}">
                                                 <i class="fa fa-lock"></i>
                                             </a>
-                                            <a class="btn btn-default" href="{{ route('admin.users.add-role', ['id' => $item->id, 'role' => 'banned']) }}" title="{{ !$item->hasRole('banned') ? "Banla" : "Ban kaldır" }}">
+                                            <a class="btn btn-default" href="{{ route('admin.users.add-role', ['id' => $item->id, 'role' => 'banned']) }}" data-toggle="tooltip" data-placement="top" title="{{ !$item->hasRole('banned') ? "Banla" : "Ban kaldır" }}">
                                                 <i class="fa fa-ban"></i>
                                             </a>
                                         </td>
