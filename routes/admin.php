@@ -24,6 +24,8 @@ Route::controller(AdminController::class)->group(function() {
     Route::any('comments/delete/{id}', 'delete_comments')->name('comments.delete');
     Route::get('events', 'events')->name('events');
     Route::any('events/add', 'add_events')->name('events.add');
+    Route::any('events/edit/{id}', 'edit_events')->name('events.edit');
+    Route::any('events/delete/{id}', 'delete_events')->name('events.delete');
     Route::get('contacts', 'contacts')->name('contacts');
     // admin role
     Route::middleware('role:admin')->group(function() {

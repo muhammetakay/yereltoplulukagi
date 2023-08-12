@@ -32,7 +32,14 @@
                                         <td data-order="{{ $item->event_date->timestamp }}">{{ $item->event_date->translatedFormat('j F Y, H:i') }}</td>
                                         <td>{{ $item->location }}</td>
                                         <td>{{ $item->organizer }}</td>
-                                        <td>-</td>
+                                        <td>
+                                            <a class="btn btn-default" href="{{ route('admin.events.edit', ['id' => $item->id]) }}" title="Düzenle">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a class="btn btn-default" href="{{ route('admin.events.delete', ['id' => $item->id]) }}" title="Sil! Geri alınamaz.">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

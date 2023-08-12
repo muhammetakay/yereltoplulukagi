@@ -193,6 +193,49 @@ class AdminController extends Controller
         return view('admin.events-add', compact('user'));
     }
 
+    public function edit_events(Request $request, $id)
+    {
+        $user = auth()->user();
+        $event = Event::where('id', $id)->first();
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'event_name' => 'required',
+                'event_date' => 'required|date|after:now',
+                'location' => 'required',
+                'organizer' => 'required',
+                'description' => 'required',
+                'event_image' => 'image|nullable'
+            ]);
+
+            $changes = [
+                'name' => $request->event_name,
+                'event_date' => $request->event_date,
+                'location' => $request->location,
+                'organizer' => $request->organizer,
+                'description' => $request->description,
+            ];
+
+            if($request->has('event_image')) {
+                $fileName = time() . '.' . $request->event_image->extension();
+                $request->event_image->storeAs('public/uploads', $fileName);
+                $changes['image_path'] = 'storage/uploads/' . $fileName;
+            }
+
+            $event->update($changes);
+            return redirect()->route('admin.events');
+            // return redirect()->back()->with('message', 'Haber başarıyla düzenlendi.');
+        }
+        return view('admin.events-edit', compact('user', 'event'));
+    }
+
+    public function delete_events(Request $request, $id)
+    {
+        $event = Event::where('id', $id)->first();
+        $event->delete();
+
+        return redirect()->back();
+    }
+
     public function contacts()
     {
         $user = auth()->user();
