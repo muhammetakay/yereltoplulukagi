@@ -26,7 +26,9 @@ class AuthController extends Controller
                     return redirect()->back()->withErrors("Hesabınız banlanmıştır.")->withInput($request->all());
                 }
                 if(session()->has('redirect')) {
-                    return redirect()->to(session()->get('redirect'));
+                    $redirect = session()->get('redirect');
+                    session()->forget('redirect');
+                    return redirect()->to($redirect);
                 }
                 return redirect()->route('index');
             }else {
