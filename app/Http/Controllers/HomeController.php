@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function index() {
         $sliderNews = News::with('category')->orderByDesc('created_at')->take(7)->get();
-        $featuredNews = News::with('category')->where('created_at', '>=', now()->subDays(3))->take(5)->get();
+        $featuredNews = News::with('category')->where('created_at', '>=', now()->subMonth())->orderByDesc('views')->take(5)->get();
         $recentNews = News::with(['category', 'writer', 'comments'])->orderByDesc('created_at')->take(10)->get();
         return view('index', compact('sliderNews', 'featuredNews', 'recentNews'));
     }
