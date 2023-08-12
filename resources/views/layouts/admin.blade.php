@@ -63,6 +63,10 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
+                            <a href="{{ route('user.index') }}"><i class="fa fa-gear fa-fw"></i> Ayarlar</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
                             <a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Çıkış yap</a>
                         </li>
                     </ul>
