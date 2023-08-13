@@ -157,10 +157,11 @@
             resize: true
         });
 
-        Morris.Donut({
+        var morrisDonut = Morris.Donut({
             element: 'morris-donut-chart',
             data: {!! json_encode($donutChart) !!},
             resize: true
         });
+        morrisDonut.select(2);
     </script>
 @endpush
